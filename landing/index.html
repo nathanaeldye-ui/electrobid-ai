@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElectroBid AI — 60-Second Electrical Bids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#2563eb;--dark:#0f172a;--gray:#64748b;--light:#f8fafc;--accent:#facc15}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--dark);line-height:1.6}
+a{color:var(--blue);text-decoration:none}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;padding:5rem 1.5rem 4rem;text-align:center}
+.hero .badge{display:inline-block;background:rgba(250,204,21,.15);color:var(--accent);font-weight:600;font-size:.85rem;padding:.4rem 1rem;border-radius:99px;margin-bottom:1.5rem;border:1px solid rgba(250,204,21,.3)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.15;max-width:700px;margin:0 auto .75rem}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:1.15rem;color:#94a3b8;max-width:540px;margin:0 auto 2rem}
+.hero .cta{display:inline-block;background:var(--accent);color:var(--dark);font-weight:700;font-size:1.1rem;padding:.9rem 2.2rem;border-radius:8px;transition:transform .15s}
+.hero .cta:hover{transform:translateY(-2px)}
+.hero .sub{margin-top:.75rem;font-size:.85rem;color:#64748b}
+
+/* PAIN */
+.pain{padding:4rem 1.5rem;text-align:center;background:#fff}
+.pain h2{font-size:1.8rem;font-weight:700;margin-bottom:2rem}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:900px;margin:0 auto}
+.pain-card{background:var(--light);border-radius:12px;padding:1.5rem;text-align:left}
+.pain-card .icon{font-size:1.6rem;margin-bottom:.5rem}
+.pain-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.35rem}
+.pain-card p{font-size:.92rem;color:var(--gray)}
+
+/* HOW */
+.how{padding:4rem 1.5rem;background:var(--light);text-align:center}
+.how h2{font-size:1.8rem;font-weight:700;margin-bottom:.5rem}
+.how .sub{color:var(--gray);margin-bottom:2.5rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;max-width:800px;margin:0 auto}
+.step{position:relative}
+.step .num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:1.2rem;margin-bottom:.75rem}
+.step h3{font-size:1.05rem;font-weight:600;margin-bottom:.3rem}
+.step p{font-size:.9rem;color:var(--gray)}
+
+/* PRICING */
+.pricing{padding:4rem 1.5rem;text-align:center;background:#fff}
+.pricing h2{font-size:1.8rem;font-weight:700;margin-bottom:2rem}
+.price-card{max-width:380px;margin:0 auto;background:var(--dark);color:#fff;border-radius:16px;padding:2.5rem 2rem;position:relative;overflow:hidden}
+.price-card::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;background:var(--blue);border-radius:50%;opacity:.3}
+.price-card .amount{font-size:3rem;font-weight:800;line-height:1}
+.price-card .amount span{font-size:1.1rem;font-weight:500;color:#94a3b8}
+.price-card .period{color:#94a3b8;margin-bottom:1.5rem}
+.price-card ul{list-style:none;text-align:left;margin-bottom:1.5rem}
+.price-card li{padding:.4rem 0;font-size:.95rem}
+.price-card li::before{content:'✓ ';color:var(--accent);font-weight:700}
+.price-card .cta{display:block;background:var(--accent);color:var(--dark);font-weight:700;padding:.85rem;border-radius:8px;text-align:center;font-size:1.05rem}
+
+/* WAITLIST */
+.waitlist{padding:4rem 1.5rem;background:linear-gradient(135deg,#1e3a5f,#0f172a);color:#fff;text-align:center}
+.waitlist h2{font-size:1.8rem;font-weight:700;margin-bottom:.5rem}
+.waitlist .sub{color:#94a3b8;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.waitlist form{display:flex;gap:.5rem;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.waitlist input[type=text],.waitlist input[type=email]{flex:1;min-width:200px;padding:.8rem 1rem;border:2px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:1rem;font-family:inherit}
+.waitlist input::placeholder{color:#64748b}
+.waitlist button{background:var(--accent);color:var(--dark);font-weight:700;padding:.8rem 1.8rem;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit;transition:transform .15s}
+.waitlist button:hover{transform:translateY(-2px)}
+.waitlist .note{font-size:.8rem;color:#475569;margin-top:.75rem}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem 1.5rem;background:var(--dark);color:#475569;font-size:.85rem;border-top:1px solid rgba(255,255,255,.05)}
+
+/* SOCIAL PROOF */
+.proof{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.proof-item{font-size:.9rem;color:#94a3b8}
+.proof-item strong{color:#fff;font-size:1.3rem;display:block}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">⚡ Built by electricians, for electricians</div>
+  <h1>Accurate Electrical Bids in <span>60 Seconds</span></h1>
+  <p>Stop spending hours on takeoffs and spreadsheets. ElectroBid AI turns project details into professional bids instantly.</p>
+  <a href="#waitlist" class="cta">Join the Waitlist →</a>
+  <div class="sub">Launching soon · $39/mo · No contracts</div>
+  <div class="proof">
+    <div class="proof-item"><strong>60s</strong>Average bid time</div>
+    <div class="proof-item"><strong>95%</strong>Accuracy rate</div>
+    <div class="proof-item"><strong>$39</strong>Per month</div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="pain">
+  <h2>Bidding Shouldn't Take All Night</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">⏰</div>
+      <h3>Hours on Every Bid</h3>
+      <p>Manual takeoffs, material lookups, labor calcs — one residential bid can eat 2-4 hours you don't have.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">💸</div>
+      <h3>Leaving Money on the Table</h3>
+      <p>Underbid and you lose profit. Overbid and you lose the job. Guesswork costs you either way.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">📋</div>
+      <h3>Spreadsheet Hell</h3>
+      <p>Juggling Excel templates, outdated price lists, and scribbled notes is not a system — it's a liability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <h2>How ElectroBid AI Works</h2>
+  <p class="sub">Three steps. One minute. Done.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Describe the Job</h3>
+      <p>Enter project type, square footage, and scope. Upload plans if you have them.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>AI Builds the Bid</h3>
+      <p>Our engine calculates materials, labor hours, and markup using real-world pricing data.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Send &amp; Win</h3>
+      <p>Export a professional PDF proposal. Customize, brand it, and send to your customer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <h2>Simple, Honest Pricing</h2>
+  <div class="price-card">
+    <div class="amount">$39<span>/mo</span></div>
+    <div class="period">Cancel anytime · No setup fees</div>
+    <ul>
+      <li>Unlimited bids</li>
+      <li>Residential &amp; light commercial</li>
+      <li>Real-time material pricing</li>
+      <li>PDF proposal export</li>
+      <li>Local labor rate adjustment</li>
+      <li>Job history &amp; templates</li>
+    </ul>
+    <a href="#waitlist" class="cta">Get Early Access →</a>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <h2>Get Early Access</h2>
+  <p class="sub">Be first in line when we launch. Early members lock in founder pricing forever.</p>
+  <form action="https://formsubmit.co/nathan.dye@prismelectric.com" method="POST">
+    <input type="hidden" name="_subject" value="ElectroBid AI Waitlist Signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <button type="submit">Join Waitlist</button>
+  </form>
+  <div class="note">No spam. No credit card. Just early access.</div>
+</section>
+
+<footer>
+  &copy; 2026 ElectroBid AI · Built in Fort Worth, TX
+</footer>
+
+</body>
+</html>
