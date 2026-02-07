@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectroBid AI - AI Bids That Win Jobs in 60 Seconds</title>
     <meta name="description" content="Stop losing jobs to slow bids. ElectroBid AI generates accurate electrical estimates in 60 seconds with NEC-compliant materials, labor costs, and profit optimization.">
+    <meta name="keywords" content="electrical bidding software, electrician estimator, job bid calculator, electrical estimate software, contractor bidding tool, NEC compliant estimator, electrical takeoff software">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nathanaeldye-ui.github.io/electrobid-ai/">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nathanaeldye-ui.github.io/electrobid-ai/">
+    <meta property="og:title" content="ElectroBid AI - AI Electrical Bid Calculator | 60-Second Estimates">
+    <meta property="og:description" content="Win more jobs with AI-powered electrical estimates. Auto material takeoffs, NEC 2023 compliance, profit optimization. $39/mo early bird pricing.">
+    <meta property="og:image" content="https://nathanaeldye-ui.github.io/electrobid-ai/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ElectroBid AI - AI Electrical Bid Calculator">
+    <meta name="twitter:description" content="Win more jobs with AI-powered electrical estimates in 60 seconds.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -449,8 +464,12 @@
                     </p>
                 </div>
                 
-                <!-- Formspree Form - free form backend -->
-                <form id="waitlist-form" action="https://formspree.io/f/xpwzqvgj" method="POST" class="space-y-6">
+                <!-- FormSubmit.co - free form backend, sends to nathan.dye@prismelectric.com -->
+                <form id="waitlist-form" action="https://formsubmit.co/nathan.dye@prismelectric.com" method="POST" class="space-y-6">
+                    <input type="hidden" name="_subject" value="New ElectroBid AI Waitlist Signup!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
                     <div>
                         <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                             Email Address *
@@ -591,8 +610,8 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Joining...';
             
-            // Submit to Formspree
-            fetch('https://formspree.io/f/xpwzqvgj', {
+            // Submit to FormSubmit.co
+            fetch('https://formsubmit.co/ajax/nathan.dye@prismelectric.com', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify(formData)
